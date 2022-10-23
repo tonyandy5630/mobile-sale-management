@@ -1,15 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace MobileSaleLibrary.BussinessObject
+namespace MobileSaleLibrary.Models
 {
-    public class Phone
+    public partial class TblPhone
     {
-        public string PhoneID { get; set; }
-        public int Quantity { get; set; }
-        public string PhoneName { get; set; }
+        public TblPhone()
+        {
+            TblImportInfos = new HashSet<ImportInfo>();
+            TblReceiptInfos = new HashSet<TblReceiptInfo>();
+        }
+
+        public int PhoneId { get; set; }
+        public int ModelId { get; set; }
+        public string Type { get; set; }
+        public int ShowPrice { get; set; }
+
+        public virtual Model Model { get; set; }
+        public virtual ICollection<ImportInfo> TblImportInfos { get; set; }
+        public virtual ICollection<TblReceiptInfo> TblReceiptInfos { get; set; }
     }
 }
