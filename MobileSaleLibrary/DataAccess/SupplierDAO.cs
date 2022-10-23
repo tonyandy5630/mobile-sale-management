@@ -8,5 +8,6 @@ namespace MobileSaleLibrary.DataAccess
 {
     internal class SupplierDAO
     {
+        // do not touch Id
     }
 }

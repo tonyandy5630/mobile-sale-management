@@ -8,5 +8,6 @@ namespace MobileSaleLibrary.DataAccess
 {
     internal class CustomerDAO
     {
+        //do not change id
     }
 }

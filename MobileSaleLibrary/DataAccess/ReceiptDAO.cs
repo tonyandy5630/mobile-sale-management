@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace MobileSaleLibrary.DataAccess
 {
-    internal class RecipeDAO
+    internal class ReceiptDAO
     {
+        // do not touch Id
     }
 }
