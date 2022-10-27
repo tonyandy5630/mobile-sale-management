@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MobileSaleLibrary.DataAccess
 {
-    internal class ReciptInfoDAO
+    internal class ReceiptInfoDAO
     {
     }
 }

@@ -3,18 +3,18 @@ using System.Collections.Generic;
 
 namespace MobileSaleLibrary.Models
 {
-    public partial class TblImport
+    public partial class Import
     {
-        public TblImport()
+        public Import()
         {
-            TblImportInfos = new HashSet<TblImportInfo>();
+            TblImportInfos = new HashSet<ImportInfo>();
         }
 
         public int ImportId { get; set; }
         public DateTime? ImportDate { get; set; }
         public int? SupplierId { get; set; }
 
-        public virtual TblSupplier Supplier { get; set; }
-        public virtual ICollection<TblImportInfo> TblImportInfos { get; set; }
+        public virtual Supplier Supplier { get; set; }
+        public virtual ICollection<ImportInfo> TblImportInfos { get; set; }
     }
 }

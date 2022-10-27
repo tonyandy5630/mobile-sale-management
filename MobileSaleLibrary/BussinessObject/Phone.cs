@@ -3,12 +3,21 @@ using System.Collections.Generic;
 
 namespace MobileSaleLibrary.Models
 {
-    public partial class TblPhone
+    public partial class Phone
     {
-        public TblPhone()
+        public Phone()
         {
             TblImportInfos = new HashSet<ImportInfo>();
-            TblReceiptInfos = new HashSet<TblReceiptInfo>();
+            TblReceiptInfos = new HashSet<ReceiptInfo>();
+        }
+
+        public Phone(int phoneId, int modelId, string type, int showPrice, Model model)
+        {
+            PhoneId = phoneId;
+            ModelId = modelId;
+            Type = type;
+            ShowPrice = showPrice;
+            Model = model;
         }
 
         public int PhoneId { get; set; }
@@ -18,6 +27,6 @@ namespace MobileSaleLibrary.Models
 
         public virtual Model Model { get; set; }
         public virtual ICollection<ImportInfo> TblImportInfos { get; set; }
-        public virtual ICollection<TblReceiptInfo> TblReceiptInfos { get; set; }
+        public virtual ICollection<ReceiptInfo> TblReceiptInfos { get; set; }
     }
 }

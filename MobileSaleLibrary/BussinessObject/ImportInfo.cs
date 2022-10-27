@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace MobileSaleLibrary.Models
 {
-    public partial class TblImportInfo
+    public partial class ImportInfo
     {
         public int ImportId { get; set; }
         public int PhoneId { get; set; }
@@ -11,6 +11,6 @@ namespace MobileSaleLibrary.Models
         public int? BuyPricePerUnit { get; set; }
 
         public virtual Import Import { get; set; }
-        public virtual TblPhone Phone { get; set; }
+        public virtual Phone Phone { get; set; }
     }
 }

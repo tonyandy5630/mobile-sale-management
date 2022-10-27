@@ -17,14 +17,14 @@ namespace MobileSaleLibrary.DataAccess
         {
         }
 
-        public virtual DbSet<TblCustomer> TblCustomers { get; set; }
-        public virtual DbSet<TblImport> TblImports { get; set; }
-        public virtual DbSet<TblImportInfo> TblImportInfos { get; set; }
-        public virtual DbSet<TblModel> TblModels { get; set; }
-        public virtual DbSet<TblPhone> TblPhones { get; set; }
-        public virtual DbSet<TblReceipt> TblReceipts { get; set; }
-        public virtual DbSet<TblReceiptInfo> TblReceiptInfos { get; set; }
-        public virtual DbSet<TblSupplier> TblSuppliers { get; set; }
+        public virtual DbSet<Customer> TblCustomers { get; set; }
+        public virtual DbSet<Import> TblImports { get; set; }
+        public virtual DbSet<ImportInfo> TblImportInfos { get; set; }
+        public virtual DbSet<Model> TblModels { get; set; }
+        public virtual DbSet<Phone> TblPhones { get; set; }
+        public virtual DbSet<Receipt> TblReceipts { get; set; }
+        public virtual DbSet<ReceiptInfo> TblReceiptInfos { get; set; }
+        public virtual DbSet<Supplier> TblSuppliers { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -37,7 +37,7 @@ namespace MobileSaleLibrary.DataAccess
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<TblCustomer>(entity =>
+            modelBuilder.Entity<Customer>(entity =>
             {
                 entity.HasKey(e => e.CustomerId);
 
@@ -61,7 +61,7 @@ namespace MobileSaleLibrary.DataAccess
                 entity.Property(e => e.Gender).HasMaxLength(10);
             });
 
-            modelBuilder.Entity<TblImport>(entity =>
+            modelBuilder.Entity<Import>(entity =>
             {
                 entity.HasKey(e => e.ImportId);
 
@@ -81,7 +81,7 @@ namespace MobileSaleLibrary.DataAccess
                     .HasConstraintName("FK_tblImport_tblSupplier");
             });
 
-            modelBuilder.Entity<TblImportInfo>(entity =>
+            modelBuilder.Entity<ImportInfo>(entity =>
             {
                 entity.HasKey(e => new { e.ImportId, e.PhoneId })
                     .HasName("PK_ImportInfo");
@@ -107,7 +107,7 @@ namespace MobileSaleLibrary.DataAccess
                     .HasConstraintName("FK_tblImportInfo_tblPhone");
             });
 
-            modelBuilder.Entity<TblModel>(entity =>
+            modelBuilder.Entity<Model>(entity =>
             {
                 entity.HasKey(e => e.ModelId)
                     .HasName("PK_tblPhoneInfo");
@@ -131,7 +131,7 @@ namespace MobileSaleLibrary.DataAccess
                 entity.Property(e => e.ModelYearOfWarranty).HasColumnName("modelYearOfWarranty");
             });
 
-            modelBuilder.Entity<TblPhone>(entity =>
+            modelBuilder.Entity<Phone>(entity =>
             {
                 entity.HasKey(e => e.PhoneId)
                     .HasName("PK_Phone");
@@ -156,7 +156,7 @@ namespace MobileSaleLibrary.DataAccess
                     .HasConstraintName("FK_tblPhone_tblModel");
             });
 
-            modelBuilder.Entity<TblReceipt>(entity =>
+            modelBuilder.Entity<Receipt>(entity =>
             {
                 entity.HasKey(e => e.ReceiptId);
 
@@ -177,7 +177,7 @@ namespace MobileSaleLibrary.DataAccess
                     .HasConstraintName("FK_tblReceipt_tblCustomer");
             });
 
-            modelBuilder.Entity<TblReceiptInfo>(entity =>
+            modelBuilder.Entity<ReceiptInfo>(entity =>
             {
                 entity.HasKey(e => new { e.ReceiptId, e.PhoneId });
 
@@ -205,7 +205,7 @@ namespace MobileSaleLibrary.DataAccess
                     .HasConstraintName("FK_tblReceiptInfo_tblReceipt");
             });
 
-            modelBuilder.Entity<TblSupplier>(entity =>
+            modelBuilder.Entity<Supplier>(entity =>
             {
                 entity.HasKey(e => e.SupplierId);
 

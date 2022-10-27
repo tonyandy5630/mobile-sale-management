@@ -3,11 +3,11 @@ using System.Collections.Generic;
 
 namespace MobileSaleLibrary.Models
 {
-    public partial class TblCustomer
+    public partial class Customer
     {
-        public TblCustomer()
+        public Customer()
         {
-            TblReceipts = new HashSet<TblReceipt>();
+            TblReceipts = new HashSet<Receipt>();
         }
 
         public int CustomerId { get; set; }
@@ -16,6 +16,6 @@ namespace MobileSaleLibrary.Models
         public string CustomerPhoneNumber { get; set; }
         public string CustomerAddress { get; set; }
 
-        public virtual ICollection<TblReceipt> TblReceipts { get; set; }
+        public virtual ICollection<Receipt> TblReceipts { get; set; }
     }
 }

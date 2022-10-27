@@ -8,5 +8,6 @@ namespace MobileSaleLibrary.DataAccess
 {
     internal class ImportInfoDAO
     {
+       //khong add id
     }
 }

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace MobileSaleLibrary.Models
 {
-    public partial class TblSupplier
+    public partial class Supplier
     {
-        public TblSupplier()
+        public Supplier()
         {
             TblImports = new HashSet<Import>();
         }

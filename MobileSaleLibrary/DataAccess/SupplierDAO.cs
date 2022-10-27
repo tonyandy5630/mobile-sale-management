@@ -6,8 +6,25 @@ using System.Threading.Tasks;
 
 namespace MobileSaleLibrary.DataAccess
 {
-    internal class SupplierDAO
+    public class SupplierDAO
     {
         // do not touch Id
+        private static SupplierDAO instance = null;
+        private static readonly object instanceLock = new object();
+
+        public static SupplierDAO Instance
+        {
+            get
+            {
+                lock (instanceLock)
+                {
+                    if (instance == null)
+                    {
+                        instance = new SupplierDAO();
+                    }
+                    return instance;
+                }
+            }
+        } 
     }
 }

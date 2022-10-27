@@ -3,11 +3,11 @@ using System.Collections.Generic;
 
 namespace MobileSaleLibrary.Models
 {
-    public partial class TblModel
+    public partial class Model
     {
-        public TblModel()
+        public Model()
         {
-            TblPhones = new HashSet<TblPhone>();
+            TblPhones = new HashSet<Phone>();
         }
 
         public int ModelId { get; set; }
@@ -16,6 +16,6 @@ namespace MobileSaleLibrary.Models
         public int? ModelYearOfWarranty { get; set; }
         public string ModelBrand { get; set; }
 
-        public virtual ICollection<TblPhone> TblPhones { get; set; }
+        public virtual ICollection<Phone> TblPhones { get; set; }
     }
 }
