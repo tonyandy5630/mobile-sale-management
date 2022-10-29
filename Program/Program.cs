@@ -19,21 +19,19 @@ namespace Program // Note: actual namespace depends on the project name.
             deleteReceipt();
         }
 
-        private static void AddPhone()
+        private static void AddItem()
         {
 
             try
             {
-                PhoneRepository phoneRepo = new PhoneRepository();
-                ModelRepository modelRepo = new ModelRepository();
-                //Model Model = 
-                var Phone = new Phone
+                Customer customer = new Customer
                 {
                     ModelId = 1,
                     Type = "Xiaomi",
                     ShowPrice = 3000,
                 };
-                bool AddModelSuccess = modelRepo.AddNewModel(new Model
+                bool check = CustomerDAO.Instance.AddNewCustomer(customer);
+                if (check)
                 {
                     ModelBrand = "Xiaomi 2 ",
                     ModelName = "Xioami redmi 2",
@@ -44,26 +42,51 @@ namespace Program // Note: actual namespace depends on the project name.
 
                 if (AddModelSuccess)
                 {
-                    Console.WriteLine("Created model successfully");
+                    System.Console.WriteLine("Update success");
                 }
                 else
                 {
-                    Console.WriteLine("Created Model fail");
-                }
-
-                bool AddPhoneSuccess = phoneRepo.AddNewPhone(Phone);
-                if (AddPhoneSuccess)
-                {
-                    Console.WriteLine("Successfull");
-                }
-                else
-                {
-                    Console.WriteLine("Failed");
+                    System.Console.WriteLine("Update Fail");
                 }
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.Message);
+                Console.WriteLine(ex.Message);
+            }
+        }
+        public static void showCustomer()
+        {
+            try
+            {
+                IEnumerable<Customer> customers = CustomerDAO.Instance.GetCustomerList();
+                foreach(Customer customer in customers)
+                {
+                    System.Console.WriteLine($"ID:{customer.CustomerId}, Name:{customer.CustomerName}, Address:{customer.CustomerAddress}");
+                }
+
+            }catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            
+        }
+        public static void DeleteItem(int id)
+        {
+            try
+            {
+                bool check =  CustomerDAO.Instance.DeleteCustomer(id);
+                if (check)
+                {
+                    System.Console.WriteLine("Delete success");
+                }
+                else
+                {
+                    System.Console.WriteLine("Delte Fail");
+                }
+
+            }
+            catch (Exception ex)
+            {
                 Console.WriteLine(ex.Message);
             }
         }
