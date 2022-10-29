@@ -10,10 +10,10 @@ namespace MobileSaleLibrary.DataAccess
     public class SupplierDAO
     {
         // do not touch Id
-        private static CustomerDAO instance = null;
+        private static SupplierDAO instance = null;
         private static readonly object instanceLock = new object();
 
-        public static CustomerDAO Instance
+        public static SupplierDAO Instance
         {
             get
             {
@@ -21,20 +21,20 @@ namespace MobileSaleLibrary.DataAccess
                 {
                     if (instance == null)
                     {
-                        instance = new CustomerDAO();
+                        instance = new SupplierDAO();
                     }
                     return instance;
                 }
             }
         }
 
-        public IEnumerable<Customer> GetCustomerList()
+        public IEnumerable<Supplier> GetSupplierList()
         {
-            var suppliers = new List<Customer>();
+            var suppliers = new List<Supplier>();
             try
             {
                 using var context = new SalePhoneMangementContext();
-                suppliers = context.TblCustomers.ToList();
+                suppliers = context.TblSuppliers.ToList();
 
             }
             catch (Exception ex)
@@ -44,13 +44,13 @@ namespace MobileSaleLibrary.DataAccess
             return suppliers;
         }
 
-        public Customer GetCustomerByID(int supplierID)
+        public Supplier GetSupplierByID(int supplierID)
         {
-            Customer supplier = null;
+            Supplier supplier = null;
             try
             {
                 using var context = new SalePhoneMangementContext();
-                supplier = context.TblCustomers.SingleOrDefault(c => c.CustomerId == supplierID);
+                supplier = context.TblSuppliers.SingleOrDefault(c => c.SupplierId == supplierID);
             }
             catch (Exception ex)
             {
@@ -60,26 +60,26 @@ namespace MobileSaleLibrary.DataAccess
             return supplier;
         }
 
-        public bool AddNewCustomer(Customer supplier)
+        public bool AddNewSupplier(Supplier supplier)
         {
-            Customer aCustomer;
+            Supplier aSupplier;
             try
             {
-                if (supplier.CustomerId != 0)
+                if (supplier.SupplierId != 0)
                 {
                     throw new Exception("Cannot insert ID when add item");
                     return false;
                 }
-                aCustomer = GetCustomerByID(supplier.CustomerId);
-                if (aCustomer == null)
+                aSupplier = GetSupplierByID(supplier.SupplierId);
+                if (aSupplier == null)
                 {
                     using var context = new SalePhoneMangementContext();
-                    context.TblCustomers.Add(supplier);
+                    context.TblSuppliers.Add(supplier);
                     return context.SaveChanges() == 1;
                 }
                 else
                 {
-                    throw new Exception("Customer alredy exist");
+                    throw new Exception("Supplier alredy exist");
                 }
             }
             catch (Exception ex)
@@ -88,21 +88,21 @@ namespace MobileSaleLibrary.DataAccess
             }
         }
 
-        public bool updateCustomer(Customer supplier)
+        public bool updateSupplier(Supplier supplier)
         {
-            Customer aCustomer = null;
+            Supplier aSupplier = null;
             try
             {
-                aCustomer = GetCustomerByID(supplier.CustomerId);
-                if (aCustomer != null)
+                aSupplier = GetSupplierByID(supplier.SupplierId);
+                if (aSupplier != null)
                 {
                     using var context = new SalePhoneMangementContext();
-                    context.TblCustomers.Update(supplier);
+                    context.TblSuppliers.Update(supplier);
                     return context.SaveChanges() == 1;
                 }
                 else
                 {
-                    throw new Exception("Customer not exist ");
+                    throw new Exception("Supplier not exist ");
                 }
             }
             catch (Exception ex)
@@ -111,20 +111,20 @@ namespace MobileSaleLibrary.DataAccess
             }
         }
 
-        public bool DeleteCustomer(int supplierID)
+        public bool DeleteSupplier(int supplierID)
         {
-            Customer dCustomer = GetCustomerByID(supplierID);
+            Supplier dSupplier = GetSupplierByID(supplierID);
             try
             {
-                if (dCustomer != null)
+                if (dSupplier != null)
                 {
                     using var context = new SalePhoneMangementContext();
-                    context.Remove(dCustomer);
+                    context.Remove(dSupplier);
                     return context.SaveChanges() == 1;
                 }
                 else
                 {
-                    throw new Exception("Customer not exist !!");
+                    throw new Exception("Supplier not exist !!");
                 }
 
             }
