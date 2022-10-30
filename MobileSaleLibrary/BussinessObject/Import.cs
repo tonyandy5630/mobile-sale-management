@@ -11,8 +11,8 @@ namespace MobileSaleLibrary.Models
         }
 
         public int ImportId { get; set; }
-        public DateTime? ImportDate { get; set; }
-        public int? SupplierId { get; set; }
+        public DateTime ImportDate { get; set; }
+        public int SupplierId { get; set; }
 
         public virtual Supplier Supplier { get; set; }
         public virtual ICollection<ImportInfo> TblImportInfos { get; set; }

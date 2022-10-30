@@ -13,7 +13,7 @@ namespace MobileSaleLibrary.Models
         public int ModelId { get; set; }
         public string ModelName { get; set; }
         public string ModelOrigin { get; set; }
-        public int? ModelYearOfWarranty { get; set; }
+        public int ModelYearOfWarranty { get; set; }
         public string ModelBrand { get; set; }
 
         public virtual ICollection<Phone> TblPhones { get; set; }
