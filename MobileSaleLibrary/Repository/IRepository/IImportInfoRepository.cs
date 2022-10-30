@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MobileSaleLibrary.Repository.IRepository
 {
-    public interface IImportInfoRepository:ImportInfoRepository
+    public interface IImportInfoRepository
     {
         IEnumerable<ImportInfo> GetImportInfoList();
         bool AddNewImportInfo(ImportInfo importInfo);
