@@ -70,8 +70,15 @@ namespace MobileSaleLibrary.DataAccess
                 if (dRec != null)
                 {
                     using var context = new SalePhoneMangementContext();
-                    var deleteReceipt = context.TblReceiptInfos.SingleOrDefault(reci => reci.ReceiptId == dRec.ReceiptId && reci.PhoneId == phoneID);
-                    context.TblReceiptInfos.Remove(deleteReceipt);
+                    ReceiptInfo deleteReceipt = context.TblReceiptInfos.SingleOrDefault(reci => reci.ReceiptId == dRec.ReceiptId && reci.PhoneId == phoneID);
+                    if(deleteReceipt != null)
+                    {
+                        context.TblReceiptInfos.Remove(deleteReceipt);
+                    }
+                    else
+                    {
+                        throw new Exception("Not exist recipt info");
+                    }
                     return context.SaveChanges() == 1;
                 }
                 else
