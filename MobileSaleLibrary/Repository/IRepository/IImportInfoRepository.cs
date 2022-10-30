@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace MobileSaleLibrary.Repository.IRepository
 {
-    public interface IImportInfoRepository
+    public interface IImportInfoRepository:ImportInfoRepository
     {
         IEnumerable<ImportInfo> GetImportInfoList();
         bool AddNewImportInfo(ImportInfo importInfo);
-        bool RemoveImportInfo(int id);
-        ImportInfo GetImportInfoByID(int id);
+        bool RemoveImportInfo(int id, int phoneID);
+        ImportInfo GetImportInfoByID(int id, int phoneID);
         bool UpdateImportInfo(ImportInfo importInfo);
     }
 }

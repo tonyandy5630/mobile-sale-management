@@ -9,12 +9,13 @@ using System.Threading.Tasks;
 
 namespace MobileSaleLibrary.Repository
 {
-    public class ImportRepository:IImportInfoRepository
+    public class ImportRepository:IImportRepository
     {
-        public IEnumerable<ImportInfo> GetImportInfoList() => ImportInfoDAO.Instance.GetImportInfoList();
-        public ImportInfo GetImportInfoByID(int id) => ImportInfoDAO.Instance.GetImportInfoByID(id);
-        public bool AddNewImportInfo(ImportInfo importInfo) => ImportInfoDAO.Instance.AddNewImportInfo(importInfo);
-        public bool UpdateImportInfo(ImportInfo importInfo) => ImportInfoDAO.Instance.updateImportInfo(importInfo);
-        public bool RemoveImportInfo(int id) => ImportInfoDAO.Instance.DeleteImportInfo(id);
+        public IEnumerable<Import> GetImportList() => ImportDAO.Instance.GetImportList();
+        public Import GetImportByID(int id) => ImportDAO.Instance.GetImportByID(id);
+        public bool AddNewImport(Import import) => ImportDAO.Instance.AddNewImport(import);
+        public bool UpdateImport(Import import) => ImportDAO.Instance.updateImport(import);
+        public bool RemoveImport(int id) => ImportDAO.Instance.DeleteImport(id);
+        
     }
 }
