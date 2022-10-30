@@ -10,6 +10,13 @@ namespace MobileSaleLibrary.Repository.IRepository
     public interface IReceiptInfoRepository
     {
         IEnumerable<ReceiptInfo> GetReceiptInfoList();
+        IEnumerable<ReceiptInfo> GetReceiptInfoListByRecieptID(int id);
+        bool DeleteReceiptInfoByReceiptIDAndPhoneID(int receiptId, int phoneId);
+
+        bool UpdateReceiptInfo(ReceiptInfo receiptInfo);
+
         bool CreateReceiptInfo(ReceiptInfo recInfo);
+
+        
     }
 }

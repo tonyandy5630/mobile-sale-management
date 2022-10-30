@@ -16,8 +16,9 @@ namespace Program // Note: actual namespace depends on the project name.
             //AddPhone();
             //addRecipt();
             //updateRecipt();
-            deleteReceipt();
         }
+
+
 
     }
 }

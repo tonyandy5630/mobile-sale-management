@@ -13,5 +13,11 @@ namespace MobileSaleLibrary.Repository
     {
         public IEnumerable<ReceiptInfo> GetReceiptInfoList() => ReceiptInfoDAO.Instance.getRecipeInfoList();
         public bool CreateReceiptInfo(ReceiptInfo recInfo) => ReceiptInfoDAO.Instance.CreateNewReceiptInfo(recInfo);
+
+        public bool DeleteReceiptInfoByReceiptIDAndPhoneID(int receiptId, int phoneId) => ReceiptInfoDAO.Instance.DeleteReceiptInfoByReceiptIDAndPhoneID(receiptId, phoneId);
+
+        public IEnumerable<ReceiptInfo> GetReceiptInfoListByRecieptID(int id) => ReceiptInfoDAO.Instance.GetReciptInfoByReceiptID(id);
+
+        public bool UpdateReceiptInfo(ReceiptInfo receiptInfo) => ReceiptInfoDAO.Instance.UpdateReceiptInfo(receiptInfo);
     }
 }
